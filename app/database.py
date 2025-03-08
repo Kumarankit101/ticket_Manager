@@ -3,7 +3,6 @@ from supabase import create_client
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 from dotenv import load_dotenv
-from fastapi import HTTPException
 
 # Load environment variables
 load_dotenv()
@@ -26,16 +25,5 @@ def get_db():
     db = SessionLocal()
     try:
         yield db
-    except Exception as e:
-        raise HTTPException(
-            status_code=500,
-            detail=f"An error occurred with the database session: {str(e)}",
-        )
     finally:
-        try:
-            db.close()
-        except Exception as e:
-            raise HTTPException(
-                status_code=500,
-                detail=f"An error occurred while closing the database session: {str(e)}",
-            )
+        db.close()
