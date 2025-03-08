@@ -29,6 +29,8 @@ This project is a ticketing system built using FastAPI, SQLAlchemy, and Ably for
 
 ## Setup
 
+This project requires **Python 3.11.11**.
+
 1. **Clone the repository**:
 
    ```bash
